@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>About | VISTHARA</title>
+
+  <meta
+    name="description"
+    content="Discover the story, vision and travel philosophy behind VISTHARA."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0878bd"
+  >
+
+  <link rel="icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================================
+       ABOUT PAGE
+    ===================================================== */
+
+    .about-hero {
+      position: relative;
+      min-height: 78vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: #fff;
+      background: #071c2d;
+    }
+
+    .about-hero-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .about-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(3,21,34,.86),
+          rgba(3,21,34,.12) 75%
+        );
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1240px, calc(100% - 80px));
+      margin: auto;
+      padding: 160px 0 70px;
+    }
+
+    .about-hero-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 25px;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .about-hero-label span {
+      width: 45px;
+      height: 1px;
+      background: #18b8df;
+    }
+
+    .about-hero h1 {
+      max-width: 900px;
+      font-size: clamp(60px, 8vw, 115px);
+      line-height: .92;
+      letter-spacing: -5px;
+    }
+
+    .about-hero h1 em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      color: #8eddf3;
+    }
+
+    .about-hero-bottom {
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.65);
+    }
+
+
+    /* =====================================================
+       STORY
+    ===================================================== */
+
+    .about-story {
+      padding: 150px 0;
+    }
+
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 80px;
+    }
+
+    .about-section-number {
+      display: flex;
+      gap: 17px;
+      color: #0878bd;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .about-section-number span {
+      color: #18b8df;
+    }
+
+    .about-story-content {
+      max-width: 850px;
+    }
+
+    .about-kicker {
+      color: #687582;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .about-story-content h2 {
+      margin-top: 18px;
+
+      font-size: clamp(45px, 5.5vw, 76px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .about-story-content h2 em {
+      color: #0878bd;
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .about-story-content p {
+      max-width: 720px;
+      margin-top: 32px;
+
+      color: #687582;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+
+    /* =====================================================
+       STORY IMAGE
+    ===================================================== */
+
+    .about-image-section {
+      padding-bottom: 150px;
+    }
+
+    .about-main-image {
+      position: relative;
+      height: 650px;
+      overflow: hidden;
+      border-radius: 25px;
+    }
+
+    .about-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-image-caption {
+      position: absolute;
+      left: 30px;
+      bottom: 28px;
+      color: white;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+
+    /* =====================================================
+       VALUES
+    ===================================================== */
+
+    .values-section {
+      padding: 120px 0;
+      background: #f5f8fa;
+    }
+
+    .values-heading {
+      max-width: 750px;
+      margin-bottom: 60px;
+    }
+
+    .values-heading span {
+      color: #0878bd;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .values-heading h2 {
+      margin-top: 16px;
+
+      font-size: clamp(45px, 5vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .values-heading h2 em {
+      color: #0878bd;
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .value-card {
+      min-height: 330px;
+      padding: 32px;
+
+      border-radius: 20px;
+      background: white;
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(7,28,45,.08);
+    }
+
+    .value-number {
+      display: block;
+      margin-bottom: 90px;
+
+      color: #18b8df;
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+    }
+
+    .value-card h3 {
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .value-card p {
+      color: #687582;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+
+    /* =====================================================
+       MISSION
+    ===================================================== */
+
+    .mission-section {
+      padding: 150px 0;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .mission-content span {
+      color: #0878bd;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .mission-content h2 {
+      margin: 18px 0 25px;
+
+      font-size: clamp(45px, 5vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .mission-content h2 em {
+      color: #0878bd;
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .mission-content p {
+      color: #687582;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .mission-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mission-item {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 20px;
+
+      padding: 25px 0;
+      border-bottom: 1px solid #e5ebef;
+    }
+
+    .mission-item:first-child {
+      border-top: 1px solid #e5ebef;
+    }
+
+    .mission-item strong {
+      color: #0878bd;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .mission-item h3 {
+      margin-bottom: 7px;
+      font-size: 17px;
+    }
+
+    .mission-item p {
+      color: #687582;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .about-cta {
+      padding: 100px 0;
+      color: white;
+
+      background:
+        linear-gradient(
+          120deg,
+          #075d92,
+          #0878bd,
+          #11a7d1
+        );
+    }
+
+    .about-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .about-cta span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.7);
+    }
+
+    .about-cta h2 {
+      margin-top: 15px;
+
+      font-size: clamp(45px, 5vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .about-cta h2 em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .about-cta-button {
+      min-width: 210px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      padding: 18px 22px;
+
+      border-radius: 100px;
+
+      color: #0878bd;
+      background: white;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition: transform .35s ease;
+    }
+
+    .about-cta-button:hover {
+      transform: translateY(-4px);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .about-story-grid {
+        grid-template-columns: 150px 1fr;
+        gap: 40px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mission-grid {
+        gap: 50px;
+      }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+      .about-hero-content {
+        width: calc(100% - 40px);
+        padding: 140px 0 45px;
+      }
+
+      .about-hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .about-hero-bottom {
+        font-size: 8px;
+      }
+
+      .about-story {
+        padding: 90px 0;
+      }
+
+      .about-story-grid {
+        display: block;
+      }
+
+      .about-section-number {
+        margin-bottom: 40px;
+      }
+
+      .about-story-content h2 {
+        font-size: 45px;
+        letter-spacing: -2px;
+      }
+
+      .about-story-content p {
+        font-size: 14px;
+      }
+
+      .about-image-section {
+        padding-bottom: 90px;
+      }
+
+      .about-main-image {
+        height: 420px;
+      }
+
+      .values-section {
+        padding: 90px 0;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-card {
+        min-height: 280px;
+      }
+
+      .value-number {
+        margin-bottom: 60px;
+      }
+
+      .mission-section {
+        padding: 90px 0;
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-content h2 {
+        font-size: 45px;
+        letter-spacing: -2px;
+      }
+
+      .about-cta {
+        padding: 75px 0;
+      }
+
+      .about-cta-inner {
+        display: block;
+      }
+
+      .about-cta h2 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .about-cta-button {
+        margin-top: 35px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+  class="main-header"
+  id="mainHeader"
+>
+
+  <div class="header-inner">
+
+
+    <a
+      href="index.html"
+      class="site-logo"
+    >
+
+      <img
+        src="images/logo.png"
+        alt="VISTHARA"
+      >
+
+    </a>
+
+
+    <nav class="desktop-navigation">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a
+        href="about.html"
+        class="active"
+      >
+        About
+      </a>
+
+      <a href="trips.html">
+        Trips
+      </a>
+
+      <a href="booking.html">
+        Booking
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="header-action">
+
+      <a
+        href="booking.html"
+        class="header-book-button"
+      >
+
+        Book Now
+
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
+
+    <button
+      class="mobile-menu-toggle"
+      id="mobileMenuToggle"
+      aria-label="Open menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div
+  class="mobile-navigation"
+  id="mobileNavigation"
+>
+
+  <div class="mobile-navigation-inner">
+
+    <div class="mobile-menu-top">
+
+      <span>
+        VISTHARA
+      </span>
+
+      <button
+        id="mobileMenuClose"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html">
+        <span>01</span>
+        Home
+      </a>
+
+      <a href="about.html">
+        <span>02</span>
+        About
+      </a>
+
+      <a href="trips.html">
+        <span>03</span>
+        Trips
+      </a>
+
+      <a href="booking.html">
+        <span>04</span>
+        Booking
+      </a>
+
+      <a href="contact.html">
+        <span>05</span>
+        Contact
+      </a>
+
+    </nav>
+
+
+    <a
+      href="booking.html"
+      class="mobile-book-button"
+    >
+
+      Book Your Trip
+
+      <span>↗</span>
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ABOUT HERO
+===================================================== -->
+
+<section class="about-hero">
+
+
+  <div class="about-hero-image">
+
+    <img
+      src="images/about-hero.jpg"
+      alt="VISTHARA travel experience"
+    >
+
+  </div>
+
+
+  <div class="about-hero-overlay"></div>
+
+
+  <div class="about-hero-content">
+
+
+    <div class="about-hero-label">
+
+      <span></span>
+
+      ABOUT VISTHARA
+
+    </div>
+
+
+    <h1>
+
+      Beyond the
+
+      <em>
+        destination.
+      </em>
+
+    </h1>
+
+
+    <div class="about-hero-bottom">
+
+      <span>
+        02 / ABOUT
+      </span>
+
+      <span>
+        KARNATAKA • INDIA
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OUR STORY
+===================================================== -->
+
+<section class="about-story">
+
+  <div class="container">
+
+    <div class="about-story-grid">
+
+
+      <div class="about-section-number">
+
+        <span>
+          01
+        </span>
+
+        <p>
+          OUR STORY
+        </p>
+
+      </div>
+
+
+      <div class="about-story-content">
+
+        <span class="about-kicker">
+          TRAVEL MADE EASIER
+        </span>
+
+
+        <h2>
+
+          Travel should feel
+
+          <em>
+            effortless.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          VISTHARA was created with one simple
+          idea — travelling should be about the
+          experience, not the stress of planning it.
+
+        </p>
+
+
+        <p>
+
+          We curate meaningful journeys across
+          mountains, forests, beaches and hidden
+          corners of Karnataka, bringing together
+          transport, stays, experiences and local
+          knowledge into thoughtfully planned trips.
+
+        </p>
+
+
+        <p>
+
+          Whether it is your first adventure or the
+          next chapter in a lifetime of exploring,
+          VISTHARA is here to make the journey
+          simpler and the memories bigger.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IMAGE
+===================================================== -->
+
+<section class="about-image-section">
+
+  <div class="container">
+
+    <div class="about-main-image">
+
+      <img
+        src="images/about-main.jpg"
+        alt="Adventure with VISTHARA"
+        loading="lazy"
+      >
+
+      <div class="about-image-caption">
+
+        EXPLORE • EXPERIENCE • REMEMBER
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section class="values-section">
+
+  <div class="container">
+
+
+    <div class="values-heading">
+
+      <span>
+        02 / WHAT WE BELIEVE
+      </span>
+
+      <h2>
+
+        The way we
+
+        <em>
+          travel matters.
+        </em>
+
+      </h2>
+
+    </div>
+
+
+    <div class="values-grid">
+
+
+      <article class="value-card">
+
+        <span class="value-number">
+          01
+        </span>
+
+        <h3>
+          Explore
+        </h3>
+
+        <p>
+
+          We believe the best places are often
+          beyond the obvious. We look for
+          experiences that take you somewhere
+          worth remembering.
+
+        </p>
+
+      </article>
+
+
+      <article class="value-card">
+
+        <span class="value-number">
+          02
+        </span>
+
+        <h3>
+          Experience
+        </h3>
+
+        <p>
+
+          A destination is more than a photograph.
+          We focus on local experiences, nature,
+          people, food and moments that make
+          every journey unique.
+
+        </p>
+
+      </article>
+
+
+      <article class="value-card">
+
+        <span class="value-number">
+          03
+        </span>
+
+        <h3>
+          Connect
+        </h3>
+
+        <p>
+
+          Travel brings people together. Our trips
+          are designed to create connections,
+          friendships and stories that continue
+          long after the journey ends.
+
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MISSION
+===================================================== -->
+
+<section class="mission-section">
+
+  <div class="container">
+
+    <div class="mission-grid">
+
+
+      <div class="mission-content">
+
+        <span>
+          03 / OUR APPROACH
+        </span>
+
+
+        <h2>
+
+          Simple planning.
+
+          <em>
+            Better journeys.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          From the moment you discover a trip to
+          the moment you return home, our goal is
+          to keep the process clear, personal and
+          reliable.
+
+        </p>
+
+      </div>
+
+
+      <div class="mission-list">
+
+
+        <div class="mission-item">
+
+          <strong>
+            01
+          </strong>
+
+          <div>
+
+            <h3>
+              Carefully Curated
+            </h3>
+
+            <p>
+              Every destination is selected with
+              the experience in mind.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mission-item">
+
+          <strong>
+            02
+          </strong>
+
+          <div>
+
+            <h3>
+              Transparent
+            </h3>
+
+            <p>
+              Clear pricing, clear information and
+              no unnecessary complications.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mission-item">
+
+          <strong>
+            03
+          </strong>
+
+          <div>
+
+            <h3>
+              Personal Support
+            </h3>
+
+            <p>
+              Our team stays available before,
+              during and after your journey.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mission-item">
+
+          <strong>
+            04
+          </strong>
+
+          <div>
+
+            <h3>
+              Local Knowledge
+            </h3>
+
+            <p>
+              We know the places, routes and
+              experiences that make a difference.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="about-cta">
+
+  <div class="container">
+
+    <div class="about-cta-inner">
+
+
+      <div>
+
+        <span>
+          YOUR NEXT STORY AWAITS
+        </span>
+
+        <h2>
+
+          Ready to
+
+          <em>
+            explore?
+          </em>
+
+        </h2>
+
+      </div>
+
+
+      <a
+        href="trips.html"
+        class="about-cta-button"
+      >
+
+        Explore Our Trips
+
+        <strong>
+          ↗
+        </strong>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-top">
+
+
+      <div class="footer-brand">
+
+        <img
+          src="images/logo.png"
+          alt="VISTHARA"
+        >
+
+        <p>
+          Travel made easier.
+        </p>
+
+        <a
+          href="tel:+916363448110"
+          class="footer-phone"
+        >
+          +91 63634 48110
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          EXPLORE
+        </span>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="trips.html">
+          Trips
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          BOOKING
+        </span>
+
+        <a href="booking.html">
+          Book a Trip
+        </a>
+
+        <a href="confirmation.html">
+          Confirmed
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          LOCATION
+        </span>
+
+        <p>
+          Karnataka
+          <br>
+          India
+        </p>
+
+        <a href="#">
+          Instagram ↗
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 VISTHARA. All rights reserved.
+      </span>
+
+      <span>
+        KARNATAKA • INDIA
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+  href="https://wa.me/916363448110"
+  class="whatsapp-button"
+  target="_blank"
+  rel="noopener"
+>
+
+  <span>
+    WhatsApp
+  </span>
+
+  <strong>
+    ↗
+  </strong>
+
+</a>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

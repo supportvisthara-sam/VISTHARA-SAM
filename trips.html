@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Trips | VISTHARA</title>
+
+  <meta
+    name="description"
+    content="Explore VISTHARA's curated trips across mountains, forests, waterfalls and the coast of Karnataka."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0878bd"
+  >
+
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================================
+       TRIPS HERO
+    ===================================================== */
+
+    .trips-hero {
+      position: relative;
+      min-height: 75vh;
+
+      display: flex;
+      align-items: flex-end;
+
+      overflow: hidden;
+
+      color: white;
+      background: #071c2d;
+    }
+
+    .trips-hero-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .trips-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .trips-hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(3,21,34,.88),
+          rgba(3,21,34,.08) 75%
+        );
+    }
+
+    .trips-hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(1240px, calc(100% - 80px));
+      margin: auto;
+
+      padding: 160px 0 70px;
+    }
+
+    .trips-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 25px;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .trips-label span {
+      width: 45px;
+      height: 1px;
+      background: #18b8df;
+    }
+
+    .trips-hero h1 {
+      max-width: 900px;
+
+      font-size: clamp(60px, 8vw, 115px);
+      line-height: .92;
+      letter-spacing: -5px;
+    }
+
+    .trips-hero h1 em {
+      color: #8eddf3;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .trips-hero-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 35px;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+
+    /* =====================================================
+       TRIP INTRO
+    ===================================================== */
+
+    .trips-intro {
+      padding: 110px 0 70px;
+    }
+
+    .trips-intro-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 80px;
+    }
+
+    .trip-section-number {
+      display: flex;
+      gap: 17px;
+
+      color: #0878bd;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .trip-section-number span {
+      color: #18b8df;
+    }
+
+    .trips-intro-content {
+      max-width: 850px;
+    }
+
+    .trips-intro-content > span {
+      color: #687582;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .trips-intro-content h2 {
+      margin-top: 18px;
+
+      font-size: clamp(45px, 5.5vw, 76px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .trips-intro-content h2 em {
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .trips-intro-content p {
+      max-width: 700px;
+      margin-top: 30px;
+
+      color: #687582;
+
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       TRIP LIST
+    ===================================================== */
+
+    .trips-list-section {
+      padding: 30px 0 150px;
+      background: #f5f8fa;
+    }
+
+    .trips-list-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-bottom: 50px;
+    }
+
+    .trips-list-heading span {
+      color: #0878bd;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .trips-list-heading h2 {
+      margin-top: 14px;
+
+      font-size: clamp(40px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .trip-count {
+      color: #687582;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+
+    /* =====================================================
+       TRIP CARD
+    ===================================================== */
+
+    .trip-list-card {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+
+      margin-bottom: 25px;
+
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      background: white;
+
+      transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+    }
+
+    .trip-list-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 25px 60px rgba(7,28,45,.10);
+    }
+
+    .trip-list-image {
+      position: relative;
+      min-height: 450px;
+      overflow: hidden;
+    }
+
+    .trip-list-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .trip-list-card:hover .trip-list-image img {
+      transform: scale(1.06);
+    }
+
+    .trip-list-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.45),
+          transparent 65%
+        );
+    }
+
+    .trip-number {
+      position: absolute;
+      z-index: 2;
+
+      top: 25px;
+      left: 25px;
+
+      color: white;
+
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+    }
+
+    .trip-tag {
+      position: absolute;
+      z-index: 2;
+
+      left: 25px;
+      bottom: 25px;
+
+      color: white;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .trip-list-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 55px;
+    }
+
+    .trip-category {
+      color: #0878bd;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .trip-list-content h3 {
+      margin: 15px 0 20px;
+
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: .95;
+      letter-spacing: -2px;
+    }
+
+    .trip-list-content h3 em {
+      display: block;
+
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .trip-description {
+      max-width: 510px;
+
+      color: #687582;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .trip-meta {
+      display: flex;
+      gap: 35px;
+
+      margin: 30px 0;
+
+      padding: 20px 0;
+
+      border-top: 1px solid #e5ebef;
+      border-bottom: 1px solid #e5ebef;
+    }
+
+    .trip-meta-item span {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #8996a0;
+
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .trip-meta-item strong {
+      font-size: 13px;
+    }
+
+    .trip-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .trip-price {
+      color: #687582;
+
+      font-size: 11px;
+    }
+
+    .trip-price strong {
+      color: #071c2d;
+
+      font-size: 21px;
+    }
+
+    .trip-book-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+
+      padding: 14px 20px;
+
+      border-radius: 100px;
+
+      color: white;
+      background: #0878bd;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition:
+        background .3s ease,
+        transform .3s ease;
+    }
+
+    .trip-book-button:hover {
+      background: #075d92;
+      transform: translateY(-3px);
+    }
+
+    .trip-book-button span {
+      font-size: 16px;
+    }
+
+
+    /* =====================================================
+       CUSTOM TRIP CTA
+    ===================================================== */
+
+    .custom-trip-section {
+      padding: 120px 0;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          120deg,
+          #075d92,
+          #0878bd,
+          #11a7d1
+        );
+    }
+
+    .custom-trip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 60px;
+    }
+
+    .custom-trip-inner > div > span {
+      color: rgba(255,255,255,.7);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .custom-trip-inner h2 {
+      max-width: 750px;
+
+      margin-top: 15px;
+
+      font-size: clamp(45px, 5vw, 72px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .custom-trip-inner h2 em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .custom-trip-button {
+      min-width: 210px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 18px 22px;
+
+      border-radius: 100px;
+
+      color: #0878bd;
+      background: white;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        transform .35s ease;
+    }
+
+    .custom-trip-button:hover {
+      transform: translateY(-4px);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .trips-intro-grid {
+        grid-template-columns: 150px 1fr;
+        gap: 40px;
+      }
+
+      .trip-list-card {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-list-image {
+        min-height: 400px;
+      }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+      .trips-hero-content {
+        width: calc(100% - 40px);
+        padding: 140px 0 45px;
+      }
+
+      .trips-hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .trips-hero-bottom {
+        font-size: 8px;
+      }
+
+      .trips-intro {
+        padding: 90px 0 60px;
+      }
+
+      .trips-intro-grid {
+        display: block;
+      }
+
+      .trip-section-number {
+        margin-bottom: 40px;
+      }
+
+      .trips-intro-content h2 {
+        font-size: 45px;
+        letter-spacing: -2px;
+      }
+
+      .trips-intro-content p {
+        font-size: 14px;
+      }
+
+      .trips-list-section {
+        padding: 30px 0 90px;
+      }
+
+      .trips-list-heading {
+        display: block;
+      }
+
+      .trip-count {
+        display: block;
+        margin-top: 20px;
+      }
+
+      .trip-list-content {
+        padding: 35px 25px;
+      }
+
+      .trip-list-image {
+        min-height: 340px;
+      }
+
+      .trip-list-content h3 {
+        font-size: 43px;
+      }
+
+      .trip-meta {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .trip-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .trip-book-button {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .custom-trip-section {
+        padding: 85px 0;
+      }
+
+      .custom-trip-inner {
+        display: block;
+      }
+
+      .custom-trip-inner h2 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .custom-trip-button {
+        margin-top: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 450px) {
+
+      .trips-hero h1 {
+        font-size: 52px;
+      }
+
+      .trip-list-image {
+        min-height: 290px;
+      }
+
+      .trip-list-content h3 {
+        font-size: 38px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+  class="main-header"
+  id="mainHeader"
+>
+
+  <div class="header-inner">
+
+
+    <a
+      href="index.html"
+      class="site-logo"
+    >
+
+      <img
+        src="images/logo.png"
+        alt="VISTHARA"
+      >
+
+    </a>
+
+
+    <nav class="desktop-navigation">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a
+        href="trips.html"
+        class="active"
+      >
+        Trips
+      </a>
+
+      <a href="booking.html">
+        Booking
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="header-action">
+
+      <a
+        href="booking.html"
+        class="header-book-button"
+      >
+
+        Book Now
+
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
+
+    <button
+      class="mobile-menu-toggle"
+      id="mobileMenuToggle"
+      aria-label="Open menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE NAVIGATION
+===================================================== -->
+
+<div
+  class="mobile-navigation"
+  id="mobileNavigation"
+>
+
+  <div class="mobile-navigation-inner">
+
+
+    <div class="mobile-menu-top">
+
+      <span>
+        VISTHARA
+      </span>
+
+      <button
+        id="mobileMenuClose"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html">
+        <span>01</span>
+        Home
+      </a>
+
+      <a href="about.html">
+        <span>02</span>
+        About
+      </a>
+
+      <a href="trips.html">
+        <span>03</span>
+        Trips
+      </a>
+
+      <a href="booking.html">
+        <span>04</span>
+        Booking
+      </a>
+
+      <a href="contact.html">
+        <span>05</span>
+        Contact
+      </a>
+
+    </nav>
+
+
+    <a
+      href="booking.html"
+      class="mobile-book-button"
+    >
+
+      Book Your Trip
+
+      <span>↗</span>
+
+    </a>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="trips-hero">
+
+
+  <div class="trips-hero-image">
+
+    <img
+      src="images/trips-hero.jpg"
+      alt="VISTHARA destinations"
+    >
+
+  </div>
+
+
+  <div class="trips-hero-overlay"></div>
+
+
+  <div class="trips-hero-content">
+
+
+    <div class="trips-label">
+
+      <span></span>
+
+      VISTHARA JOURNEYS
+
+    </div>
+
+
+    <h1>
+
+      Find your
+
+      <em>
+        next escape.
+      </em>
+
+    </h1>
+
+
+    <div class="trips-hero-bottom">
+
+      <span>
+        03 / TRIPS
+      </span>
+
+      <span>
+        MOUNTAINS • COAST • FORESTS
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="trips-intro">
+
+  <div class="container">
+
+
+    <div class="trips-intro-grid">
+
+
+      <div class="trip-section-number">
+
+        <span>
+          01
+        </span>
+
+        <p>
+          OUR TRIPS
+        </p>
+
+      </div>
+
+
+      <div class="trips-intro-content">
+
+        <span>
+          CURATED FOR CURIOUS TRAVELLERS
+        </span>
+
+
+        <h2>
+
+          Choose a place.
+
+          <em>
+            Make a memory.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          Our journeys are designed around
+          experiences — not just destinations.
+          Discover mountains, waterfalls, forests,
+          beaches and hidden corners with a
+          carefully planned VISTHARA trip.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRIPS
+===================================================== -->
+
+<section class="trips-list-section">
+
+  <div class="container">
+
+
+    <div class="trips-list-heading">
+
+      <div>
+
+        <span>
+          02 / EXPLORE JOURNEYS
+        </span>
+
+        <h2>
+          Where will you go?
+        </h2>
+
+      </div>
+
+
+      <div class="trip-count">
+        05 CURATED TRIPS
+      </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TRIP 01
+    ================================================= -->
+
+    <article class="trip-list-card">
+
+
+      <div class="trip-list-image">
+
+        <img
+          src="images/trip-01.jpg"
+          alt="Western Ghats Adventure"
+          loading="lazy"
+        >
+
+        <span class="trip-number">
+          01
+        </span>
+
+        <span class="trip-tag">
+          WESTERN GHATS • KARNATAKA
+        </span>
+
+      </div>
+
+
+      <div class="trip-list-content">
+
+        <span class="trip-category">
+          ADVENTURE • 03 DAYS
+        </span>
+
+
+        <h3>
+
+          Western Ghats
+
+          <em>
+            Escape
+          </em>
+
+        </h3>
+
+
+        <p class="trip-description">
+
+          Escape into the green heart of Karnataka.
+          Trek through the Western Ghats, discover
+          waterfalls, viewpoints and quiet mountain
+          landscapes away from the city.
+
+        </p>
+
+
+        <div class="trip-meta">
+
+          <div class="trip-meta-item">
+
+            <span>
+              DURATION
+            </span>
+
+            <strong>
+              3 Days / 2 Nights
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              PICKUP
+            </span>
+
+            <strong>
+              Mysore
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              GROUP
+            </span>
+
+            <strong>
+              Limited Seats
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-bottom">
+
+          <div class="trip-price">
+
+            Starting from
+
+            <strong>
+              ₹2,999
+            </strong>
+
+            / person
+
+          </div>
+
+
+          <a
+            href="booking.html?trip=western-ghats"
+            class="trip-book-button"
+          >
+
+            View & Book
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         TRIP 02
+    ================================================= -->
+
+    <article class="trip-list-card">
+
+
+      <div class="trip-list-image">
+
+        <img
+          src="images/trip-02.jpg"
+          alt="Coastal Karnataka"
+          loading="lazy"
+        >
+
+        <span class="trip-number">
+          02
+        </span>
+
+        <span class="trip-tag">
+          COASTAL KARNATAKA
+        </span>
+
+      </div>
+
+
+      <div class="trip-list-content">
+
+        <span class="trip-category">
+          COAST • 02 DAYS
+        </span>
+
+
+        <h3>
+
+          Coastal
+
+          <em>
+            Trails
+          </em>
+
+        </h3>
+
+
+        <p class="trip-description">
+
+          Follow Karnataka's coastline through
+          beaches, cliffs, sunsets and coastal towns.
+          A relaxed escape built around the sea and
+          the road.
+
+        </p>
+
+
+        <div class="trip-meta">
+
+          <div class="trip-meta-item">
+
+            <span>
+              DURATION
+            </span>
+
+            <strong>
+              2 Days / 1 Night
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              PICKUP
+            </span>
+
+            <strong>
+              Mysore
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              STYLE
+            </span>
+
+            <strong>
+              Beach & Explore
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-bottom">
+
+          <div class="trip-price">
+
+            Starting from
+
+            <strong>
+              ₹1,999
+            </strong>
+
+            / person
+
+          </div>
+
+
+          <a
+            href="booking.html?trip=coastal-trails"
+            class="trip-book-button"
+          >
+
+            View & Book
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         TRIP 03
+    ================================================= -->
+
+    <article class="trip-list-card">
+
+
+      <div class="trip-list-image">
+
+        <img
+          src="images/trip-03.jpg"
+          alt="Coorg Highlands"
+          loading="lazy"
+        >
+
+        <span class="trip-number">
+          03
+        </span>
+
+        <span class="trip-tag">
+          COORG • KODAGU
+        </span>
+
+      </div>
+
+
+      <div class="trip-list-content">
+
+        <span class="trip-category">
+          HIGHLANDS • 03 DAYS
+        </span>
+
+
+        <h3>
+
+          Coorg
+
+          <em>
+            Highlands
+          </em>
+
+        </h3>
+
+
+        <p class="trip-description">
+
+          Misty hills, coffee plantations, forest
+          roads and peaceful stays. Experience
+          Kodagu at a slower pace.
+
+        </p>
+
+
+        <div class="trip-meta">
+
+          <div class="trip-meta-item">
+
+            <span>
+              DURATION
+            </span>
+
+            <strong>
+              3 Days / 2 Nights
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              PICKUP
+            </span>
+
+            <strong>
+              Mysore
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              STYLE
+            </span>
+
+            <strong>
+              Nature & Relax
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-bottom">
+
+          <div class="trip-price">
+
+            Starting from
+
+            <strong>
+              ₹2,499
+            </strong>
+
+            / person
+
+          </div>
+
+
+          <a
+            href="booking.html?trip=coorg"
+            class="trip-book-button"
+          >
+
+            View & Book
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         TRIP 04
+    ================================================= -->
+
+    <article class="trip-list-card">
+
+
+      <div class="trip-list-image">
+
+        <img
+          src="images/trip-04.jpg"
+          alt="Dharmasthala and Western Ghats"
+          loading="lazy"
+        >
+
+        <span class="trip-number">
+          04
+        </span>
+
+        <span class="trip-tag">
+          DAKSHINA KANNADA
+        </span>
+
+      </div>
+
+
+      <div class="trip-list-content">
+
+        <span class="trip-category">
+          SPIRITUAL • NATURE • 02 DAYS
+        </span>
+
+
+        <h3>
+
+          Dharmasthala
+
+          <em>
+            Trails
+          </em>
+
+        </h3>
+
+
+        <p class="trip-description">
+
+          A journey through the green landscapes
+          around Dharmasthala, combining peaceful
+          places, waterfalls and scenic Western Ghats
+          routes.
+
+        </p>
+
+
+        <div class="trip-meta">
+
+          <div class="trip-meta-item">
+
+            <span>
+              DURATION
+            </span>
+
+            <strong>
+              2 Days / 1 Night
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              PICKUP
+            </span>
+
+            <strong>
+              Mysore
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              STYLE
+            </span>
+
+            <strong>
+              Nature & Culture
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-bottom">
+
+          <div class="trip-price">
+
+            Starting from
+
+            <strong>
+              ₹2,299
+            </strong>
+
+            / person
+
+          </div>
+
+
+          <a
+            href="booking.html?trip=dharmasthala"
+            class="trip-book-button"
+          >
+
+            View & Book
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         TRIP 05
+    ================================================= -->
+
+    <article class="trip-list-card">
+
+
+      <div class="trip-list-image">
+
+        <img
+          src="images/trip-05.jpg"
+          alt="Kumara Parvatha Adventure"
+          loading="lazy"
+        >
+
+        <span class="trip-number">
+          05
+        </span>
+
+        <span class="trip-tag">
+          KUMARA PARVATHA
+        </span>
+
+      </div>
+
+
+      <div class="trip-list-content">
+
+        <span class="trip-category">
+          TREK • ADVENTURE
+        </span>
+
+
+        <h3>
+
+          Kumara
+
+          <em>
+            Parvatha
+          </em>
+
+        </h3>
+
+
+        <p class="trip-description">
+
+          A challenging Western Ghats adventure
+          for travellers who want a deeper connection
+          with the mountains, trails and wild
+          landscapes of Karnataka.
+
+        </p>
+
+
+        <div class="trip-meta">
+
+          <div class="trip-meta-item">
+
+            <span>
+              DURATION
+            </span>
+
+            <strong>
+              2 Days / 1 Night
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              PICKUP
+            </span>
+
+            <strong>
+              Mysore
+            </strong>
+
+          </div>
+
+
+          <div class="trip-meta-item">
+
+            <span>
+              LEVEL
+            </span>
+
+            <strong>
+              Challenging
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-bottom">
+
+          <div class="trip-price">
+
+            Starting from
+
+            <strong>
+              ₹2,999
+            </strong>
+
+            / person
+
+          </div>
+
+
+          <a
+            href="booking.html?trip=kumara-parvatha"
+            class="trip-book-button"
+          >
+
+            View & Book
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CUSTOM TRIP CTA
+===================================================== -->
+
+<section class="custom-trip-section">
+
+  <div class="container">
+
+    <div class="custom-trip-inner">
+
+
+      <div>
+
+        <span>
+          HAVE SOMETHING ELSE IN MIND?
+        </span>
+
+        <h2>
+
+          Tell us where you want to go.
+
+          <em>
+            We'll plan the rest.
+          </em>
+
+        </h2>
+
+      </div>
+
+
+      <a
+        href="contact.html"
+        class="custom-trip-button"
+      >
+
+        Plan a Custom Trip
+
+        <strong>
+          ↗
+        </strong>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-top">
+
+
+      <div class="footer-brand">
+
+        <img
+          src="images/logo.png"
+          alt="VISTHARA"
+        >
+
+        <p>
+          Travel made easier.
+        </p>
+
+        <a
+          href="tel:+916363448110"
+          class="footer-phone"
+        >
+          +91 63634 48110
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          EXPLORE
+        </span>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="trips.html">
+          Trips
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          BOOKING
+        </span>
+
+        <a href="booking.html">
+          Book a Trip
+        </a>
+
+        <a href="confirmation.html">
+          Confirmed
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          LOCATION
+        </span>
+
+        <p>
+          Karnataka
+          <br>
+          India
+        </p>
+
+        <a href="#">
+          Instagram ↗
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 VISTHARA. All rights reserved.
+      </span>
+
+      <span>
+        KARNATAKA • INDIA
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+  href="https://wa.me/916363448110"
+  class="whatsapp-button"
+  target="_blank"
+  rel="noopener"
+>
+
+  <span>
+    WhatsApp
+  </span>
+
+  <strong>
+    ↗
+  </strong>
+
+</a>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Booking | VISTHARA</title>
+
+  <meta
+    name="description"
+    content="Book your next journey with VISTHARA."
+  >
+
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       BOOKING HERO
+    ===================================================== */
+
+    .booking-hero {
+      position: relative;
+      min-height: 58vh;
+
+      display: flex;
+      align-items: flex-end;
+
+      overflow: hidden;
+
+      color: #fff;
+      background: #071c2d;
+    }
+
+    .booking-hero-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .booking-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .booking-hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(3,21,34,.9),
+          rgba(3,21,34,.15)
+        );
+    }
+
+    .booking-hero-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(1240px, calc(100% - 80px));
+      margin: auto;
+
+      padding: 150px 0 65px;
+    }
+
+    .booking-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 25px;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .booking-label span {
+      width: 45px;
+      height: 1px;
+      background: #18b8df;
+    }
+
+    .booking-hero h1 {
+      max-width: 850px;
+
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: .92;
+      letter-spacing: -5px;
+    }
+
+    .booking-hero h1 em {
+      color: #8eddf3;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .booking-hero-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 30px;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+
+    /* =====================================================
+       BOOKING AREA
+    ===================================================== */
+
+    .booking-section {
+      padding: 100px 0 150px;
+
+      background: #f5f8fa;
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 70px;
+
+      align-items: start;
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    .booking-sidebar {
+      position: sticky;
+      top: 120px;
+    }
+
+    .booking-sidebar-label {
+      color: #0878bd;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .booking-sidebar h2 {
+      margin: 15px 0 20px;
+
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .booking-sidebar h2 em {
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .booking-sidebar p {
+      color: #687582;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .booking-steps {
+      margin-top: 45px;
+    }
+
+    .booking-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 15px;
+
+      padding: 17px 0;
+
+      border-bottom: 1px solid #dfe7ec;
+    }
+
+    .booking-step:first-child {
+      border-top: 1px solid #dfe7ec;
+    }
+
+    .booking-step-number {
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+    }
+
+    .booking-step strong {
+      display: block;
+
+      margin-bottom: 4px;
+
+      font-size: 12px;
+    }
+
+    .booking-step span {
+      color: #8996a0;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       FORM CARD
+    ===================================================== */
+
+    .booking-card {
+      padding: 50px;
+
+      border-radius: 25px;
+
+      background: white;
+
+      box-shadow:
+        0 25px 70px rgba(7,28,45,.07);
+    }
+
+    .booking-card-header {
+      margin-bottom: 45px;
+    }
+
+    .booking-card-header span {
+      color: #0878bd;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .booking-card-header h2 {
+      margin-top: 12px;
+
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .booking-card-header p {
+      margin-top: 12px;
+
+      color: #687582;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .booking-form {
+      width: 100%;
+    }
+
+    .form-section {
+      margin-top: 50px;
+    }
+
+    .form-section:first-child {
+      margin-top: 0;
+    }
+
+    .form-section-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      margin-bottom: 25px;
+
+      color: #071c2d;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .form-section-title span {
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      color: #4f5e69;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .required {
+      color: #0878bd;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+
+      padding: 15px 16px;
+
+      border: 1px solid #dce5ea;
+      border-radius: 10px;
+
+      outline: none;
+
+      color: #071c2d;
+      background: #fbfcfd;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 13px;
+
+      transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #0878bd;
+
+      background: white;
+
+      box-shadow:
+        0 0 0 4px rgba(8,120,189,.08);
+    }
+
+
+    /* =====================================================
+       ID SECTION
+    ===================================================== */
+
+    .id-notice {
+      display: flex;
+      gap: 15px;
+
+      margin-bottom: 22px;
+      padding: 17px;
+
+      border-radius: 12px;
+
+      color: #5d6973;
+      background: #f2f7fa;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .id-notice strong {
+      color: #0878bd;
+      white-space: nowrap;
+    }
+
+    .id-required {
+      display: none;
+    }
+
+    .id-required.show {
+      display: block;
+    }
+
+
+    /* =====================================================
+       TRIP SUMMARY
+    ===================================================== */
+
+    .trip-summary {
+      display: none;
+
+      margin-top: 25px;
+      padding: 22px;
+
+      border: 1px solid #dce5ea;
+      border-radius: 15px;
+
+      background: #f8fbfc;
+    }
+
+    .trip-summary.show {
+      display: block;
+    }
+
+    .trip-summary-title {
+      margin-bottom: 15px;
+
+      color: #0878bd;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding: 9px 0;
+
+      border-bottom: 1px solid #e5ebef;
+
+      font-size: 12px;
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+
+    .summary-row span {
+      color: #687582;
+    }
+
+    .summary-row strong {
+      text-align: right;
+    }
+
+
+    /* =====================================================
+       CONSENT
+    ===================================================== */
+
+    .consent-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      margin-top: 35px;
+      padding: 18px;
+
+      border-radius: 12px;
+
+      background: #f5f8fa;
+    }
+
+    .consent-box input {
+      width: 17px;
+      height: 17px;
+
+      margin-top: 2px;
+
+      accent-color: #0878bd;
+    }
+
+    .consent-box label {
+      color: #687582;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       SUBMIT
+    ===================================================== */
+
+    .booking-submit {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-top: 25px;
+      padding: 19px 23px;
+
+      border: none;
+      border-radius: 100px;
+
+      cursor: pointer;
+
+      color: white;
+      background: #0878bd;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        background .3s ease,
+        transform .3s ease;
+    }
+
+    .booking-submit:hover {
+      background: #075d92;
+      transform: translateY(-3px);
+    }
+
+    .booking-submit span {
+      font-size: 18px;
+    }
+
+    .booking-note {
+      margin-top: 15px;
+
+      color: #8996a0;
+
+      text-align: center;
+
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       SUCCESS
+    ===================================================== */
+
+    .booking-success {
+      display: none;
+
+      padding: 50px 25px;
+
+      text-align: center;
+    }
+
+    .booking-success.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 65px;
+      height: 65px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 25px;
+
+      border-radius: 50%;
+
+      color: white;
+      background: #0878bd;
+
+      font-size: 27px;
+    }
+
+    .booking-success h2 {
+      margin-bottom: 12px;
+
+      font-size: 38px;
+      letter-spacing: -2px;
+    }
+
+    .booking-success p {
+      max-width: 500px;
+      margin: auto;
+
+      color: #687582;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .booking-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .booking-sidebar {
+        position: static;
+      }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+      .booking-hero-content {
+        width: calc(100% - 40px);
+
+        padding: 140px 0 45px;
+      }
+
+      .booking-hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .booking-section {
+        padding: 75px 0 90px;
+      }
+
+      .booking-card {
+        padding: 30px 20px;
+        border-radius: 20px;
+      }
+
+      .booking-card-header h2 {
+        font-size: 35px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .booking-sidebar h2 {
+        font-size: 35px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+  class="main-header"
+  id="mainHeader"
+>
+
+  <div class="header-inner">
+
+
+    <a
+      href="index.html"
+      class="site-logo"
+    >
+
+      <img
+        src="images/logo.png"
+        alt="VISTHARA"
+      >
+
+    </a>
+
+
+    <nav class="desktop-navigation">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="trips.html">
+        Trips
+      </a>
+
+      <a
+        href="booking.html"
+        class="active"
+      >
+        Booking
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="header-action">
+
+      <a
+        href="booking.html"
+        class="header-book-button"
+      >
+
+        Book Now
+
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
+
+    <button
+      class="mobile-menu-toggle"
+      id="mobileMenuToggle"
+      aria-label="Open menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div
+  class="mobile-navigation"
+  id="mobileNavigation"
+>
+
+  <div class="mobile-navigation-inner">
+
+
+    <div class="mobile-menu-top">
+
+      <span>
+        VISTHARA
+      </span>
+
+      <button
+        id="mobileMenuClose"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html">
+        <span>01</span>
+        Home
+      </a>
+
+      <a href="about.html">
+        <span>02</span>
+        About
+      </a>
+
+      <a href="trips.html">
+        <span>03</span>
+        Trips
+      </a>
+
+      <a href="booking.html">
+        <span>04</span>
+        Booking
+      </a>
+
+      <a href="contact.html">
+        <span>05</span>
+        Contact
+      </a>
+
+    </nav>
+
+
+    <a
+      href="booking.html"
+      class="mobile-book-button"
+    >
+
+      Book Your Trip
+
+      <span>↗</span>
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="booking-hero">
+
+
+  <div class="booking-hero-image">
+
+    <img
+      src="images/booking-hero.jpg"
+      alt="Book a VISTHARA journey"
+    >
+
+  </div>
+
+
+  <div class="booking-hero-overlay"></div>
+
+
+  <div class="booking-hero-content">
+
+
+    <div class="booking-label">
+
+      <span></span>
+
+      RESERVE YOUR JOURNEY
+
+    </div>
+
+
+    <h1>
+
+      Let's make your
+
+      <em>
+        trip happen.
+      </em>
+
+    </h1>
+
+
+    <div class="booking-hero-bottom">
+
+      <span>
+        04 / BOOKING
+      </span>
+
+      <span>
+        VISTHARA • KARNATAKA
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOKING
+===================================================== -->
+
+<section class="booking-section">
+
+  <div class="container">
+
+
+    <div class="booking-layout">
+
+
+      <!-- =================================================
+           SIDEBAR
+      ================================================= -->
+
+      <aside class="booking-sidebar">
+
+
+        <span class="booking-sidebar-label">
+          HOW IT WORKS
+        </span>
+
+
+        <h2>
+
+          Simple.
+
+          <em>
+            Personal.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          Fill in your details and submit your
+          request. Our team will receive your
+          information and contact you to confirm
+          availability, pricing and the final booking.
+
+        </p>
+
+
+        <div class="booking-steps">
+
+
+          <div class="booking-step">
+
+            <span class="booking-step-number">
+              01
+            </span>
+
+            <div>
+
+              <strong>
+                Choose your trip
+              </strong>
+
+              <span>
+                Select your preferred package and date.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="booking-step">
+
+            <span class="booking-step-number">
+              02
+            </span>
+
+            <div>
+
+              <strong>
+                Submit your details
+              </strong>
+
+              <span>
+                Provide accurate traveller information.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="booking-step">
+
+            <span class="booking-step-number">
+              03
+            </span>
+
+            <div>
+
+              <strong>
+                Our team contacts you
+              </strong>
+
+              <span>
+                We verify your request and contact you.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="booking-step">
+
+            <span class="booking-step-number">
+              04
+            </span>
+
+            <div>
+
+              <strong>
+                Booking confirmed
+              </strong>
+
+              <span>
+                Your trip is confirmed after final approval.
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </aside>
+
+
+
+      <!-- =================================================
+           FORM
+      ================================================= -->
+
+      <div class="booking-card">
+
+
+        <div
+          class="booking-card-header"
+          id="bookingFormHeader"
+        >
+
+          <span>
+            BOOKING REQUEST
+          </span>
+
+          <h2>
+            Traveller details
+          </h2>
+
+          <p>
+            Please provide the details exactly as shown
+            on your valid government identification.
+          </p>
+
+        </div>
+
+
+        <form
+          class="booking-form"
+          id="bookingForm"
+          action="https://formsubmit.co/YOUR_GMAIL@gmail.com"
+          method="POST"
+        >
+
+
+          <!-- =================================================
+               FORM CONFIGURATION
+          ================================================= -->
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New VISTHARA Trip Booking Request"
+          >
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          >
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
+
+          <input
+            type="hidden"
+            name="_next"
+            value="https://YOUR-DOMAIN.com/confirmation.html"
+          >
+
+
+
+          <!-- =================================================
+               TRIP DETAILS
+          ================================================= -->
+
+          <div class="form-section">
+
+
+            <div class="form-section-title">
+
+              <span>
+                01
+              </span>
+
+              Trip details
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group full">
+
+                <label for="trip">
+                  Select Trip
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="trip"
+                  name="Trip"
+                  required
+                >
+
+                  <option value="">
+                    Select your trip
+                  </option>
+
+                  <option
+                    value="Western Ghats Escape"
+                    data-price="2999"
+                  >
+                    Western Ghats Escape — ₹2,999/person
+                  </option>
+
+                  <option
+                    value="Coastal Trails"
+                    data-price="1999"
+                  >
+                    Coastal Trails — ₹1,999/person
+                  </option>
+
+                  <option
+                    value="Coorg Highlands"
+                    data-price="2499"
+                  >
+                    Coorg Highlands — ₹2,499/person
+                  </option>
+
+                  <option
+                    value="Dharmasthala Trails"
+                    data-price="2299"
+                  >
+                    Dharmasthala Trails — ₹2,299/person
+                  </option>
+
+                  <option
+                    value="Kumara Parvatha"
+                    data-price="2999"
+                  >
+                    Kumara Parvatha — ₹2,999/person
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="travelDate">
+                  Travel Date
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="date"
+                  id="travelDate"
+                  name="Travel Date"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pickup">
+                  Pickup Location
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="pickup"
+                  name="Pickup Location"
+                  required
+                >
+
+                  <option value="">
+                    Select pickup
+                  </option>
+
+                  <option value="Mysore">
+                    Mysore
+                  </option>
+
+                  <option value="Ramanagara">
+                    Ramanagara
+                  </option>
+
+                  <option value="Bengaluru">
+                    Bengaluru
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="persons">
+                  Number of Persons
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="number"
+                  id="persons"
+                  name="Number of Persons"
+                  min="1"
+                  max="30"
+                  value="1"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="amount">
+                  Estimated Total
+                </label>
+
+                <input
+                  type="text"
+                  id="amount"
+                  name="Estimated Total"
+                  value="Select a trip"
+                  readonly
+                >
+
+              </div>
+
+
+            </div>
+
+
+            <div
+              class="trip-summary"
+              id="tripSummary"
+            >
+
+              <div class="trip-summary-title">
+                BOOKING SUMMARY
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Trip
+                </span>
+
+                <strong id="summaryTrip">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Date
+                </span>
+
+                <strong id="summaryDate">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Pickup
+                </span>
+
+                <strong id="summaryPickup">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Travellers
+                </span>
+
+                <strong id="summaryPersons">
+                  1
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Estimated amount
+                </span>
+
+                <strong id="summaryAmount">
+                  —
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================================
+               PERSONAL DETAILS
+          ================================================= -->
+
+          <div class="form-section">
+
+
+            <div class="form-section-title">
+
+              <span>
+                02
+              </span>
+
+              Personal details
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group full">
+
+                <label for="fullName">
+                  Full Name
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="fullName"
+                  name="Full Name"
+                  placeholder="Enter full name as per ID"
+                  autocomplete="name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="age">
+                  Age
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="number"
+                  id="age"
+                  name="Age"
+                  min="1"
+                  max="120"
+                  placeholder="Your age"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="dob">
+                  Date of Birth
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="date"
+                  id="dob"
+                  name="Date of Birth"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="gender">
+                  Gender
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="gender"
+                  name="Gender"
+                  required
+                >
+
+                  <option value="">
+                    Select gender
+                  </option>
+
+                  <option value="Male">
+                    Male
+                  </option>
+
+                  <option value="Female">
+                    Female
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                  <option value="Prefer not to say">
+                    Prefer not to say
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="phone">
+                  Phone Number
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="Phone Number"
+                  placeholder="+91 XXXXX XXXXX"
+                  autocomplete="tel"
+                  pattern="[0-9+\-\s]{10,15}"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="email">
+                  Email ID
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="Email ID"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label for="address">
+                  Full Address as per Government ID
+                  <span class="required">*</span>
+                </label>
+
+                <textarea
+                  id="address"
+                  name="Full Address"
+                  placeholder="House / Door No., Street, Area, City, District, State, PIN Code"
+                  autocomplete="street-address"
+                  required
+                ></textarea>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================================
+               ID DETAILS
+          ================================================= -->
+
+          <div class="form-section">
+
+
+            <div class="form-section-title">
+
+              <span>
+                03
+              </span>
+
+              Identification
+
+            </div>
+
+
+            <div class="id-notice">
+
+              <strong>
+                IMPORTANT
+              </strong>
+
+              <div>
+
+                Certain destinations may require
+                government identification for entry,
+                permits or verification. Only provide
+                information required for the selected
+                trip.
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group">
+
+                <label for="idType">
+                  ID Type
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="idType"
+                  name="ID Type"
+                  required
+                >
+
+                  <option value="">
+                    Select ID type
+                  </option>
+
+                  <option value="Aadhaar">
+                    Aadhaar
+                  </option>
+
+                  <option value="PAN">
+                    PAN
+                  </option>
+
+                  <option value="Passport">
+                    Passport
+                  </option>
+
+                  <option value="Driving Licence">
+                    Driving Licence
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="idNumber">
+                  ID Number
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="idNumber"
+                  name="ID Number"
+                  placeholder="Enter ID number"
+                  autocomplete="off"
+                  required
+                >
+
+              </div>
+
+
+            </div>
+
+
+            <div
+              class="id-required"
+              id="aranyaNotice"
+            >
+
+              <div class="id-notice">
+
+                <strong>
+                  ARANYA VIHARA
+                </strong>
+
+                <div>
+
+                  Government ID details are mandatory
+                  for this booking because they may be
+                  required for destination / forest
+                  verification.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- =================================================
+               EMERGENCY CONTACT
+          ================================================= -->
+
+          <div class="form-section">
+
+
+            <div class="form-section-title">
+
+              <span>
+                04
+              </span>
+
+              Emergency contact
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group">
+
+                <label for="emergencyName">
+                  Emergency Contact Name
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="emergencyName"
+                  name="Emergency Contact Name"
+                  placeholder="Full name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="emergencyPhone">
+                  Emergency Contact Number
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="tel"
+                  id="emergencyPhone"
+                  name="Emergency Contact Number"
+                  placeholder="+91 XXXXX XXXXX"
+                  required
+                >
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================================
+               MESSAGE
+          ================================================= -->
+
+          <div class="form-section">
+
+
+            <div class="form-section-title">
+
+              <span>
+                05
+              </span>
+
+              Additional information
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group full">
+
+                <label for="message">
+                  Anything our team should know?
+                </label>
+
+                <textarea
+                  id="message"
+                  name="Additional Information"
+                  placeholder="Special requirements, questions or other information..."
+                ></textarea>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================================
+               CONSENT
+          ================================================= -->
+
+          <div class="consent-box">
+
+            <input
+              type="checkbox"
+              id="consent"
+              name="Customer Consent"
+              value="Accepted"
+              required
+            >
+
+            <label for="consent">
+
+              I confirm that the information provided
+              is accurate and belongs to me. I understand
+              that this form is a booking request and
+              that my trip is confirmed only after the
+              VISTHARA team contacts me and confirms
+              the booking.
+
+            </label>
+
+          </div>
+
+
+
+          <!-- =================================================
+               SUBMIT
+          ================================================= -->
+
+          <button
+            type="submit"
+            class="booking-submit"
+          >
+
+            <span>
+              Submit Booking Request
+            </span>
+
+            <span>
+              ↗
+            </span>
+
+          </button>
+
+
+          <p class="booking-note">
+
+            Your request will be sent to the VISTHARA
+            team for review. Our team will contact you
+            using the phone number or email provided.
+
+          </p>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             SUCCESS MESSAGE
+        ================================================= -->
+
+        <div
+          class="booking-success"
+          id="bookingSuccess"
+        >
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <h2>
+            Request received.
+          </h2>
+
+          <p>
+
+            Thank you for choosing VISTHARA.
+            Our team will review your booking request
+            and contact you shortly to confirm the trip.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-top">
+
+
+      <div class="footer-brand">
+
+        <img
+          src="images/logo.png"
+          alt="VISTHARA"
+        >
+
+        <p>
+          Travel made easier.
+        </p>
+
+        <a
+          href="tel:+916363448110"
+          class="footer-phone"
+        >
+          +91 63634 48110
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          EXPLORE
+        </span>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="trips.html">
+          Trips
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          BOOKING
+        </span>
+
+        <a href="booking.html">
+          Book a Trip
+        </a>
+
+        <a href="confirmation.html">
+          Confirmed
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <span>
+          CONTACT
+        </span>
+
+        <p>
+          Karnataka
+          <br>
+          India
+        </p>
+
+        <a href="tel:+916363448110">
+          +91 63634 48110
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 VISTHARA. All rights reserved.
+      </span>
+
+      <span>
+        KARNATAKA • INDIA
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+  href="https://wa.me/916363448110"
+  class="whatsapp-button"
+  target="_blank"
+  rel="noopener"
+>
+
+  <span>
+    WhatsApp
+  </span>
+
+  <strong>
+    ↗
+  </strong>
+
+</a>
+
+
+
+<!-- =====================================================
+     BOOKING JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+<script>
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+
+      const form =
+        document.getElementById("bookingForm");
+
+      const trip =
+        document.getElementById("trip");
+
+      const persons =
+        document.getElementById("persons");
+
+      const amount =
+        document.getElementById("amount");
+
+      const travelDate =
+        document.getElementById("travelDate");
+
+      const pickup =
+        document.getElementById("pickup");
+
+      const tripSummary =
+        document.getElementById("tripSummary");
+
+      const summaryTrip =
+        document.getElementById("summaryTrip");
+
+      const summaryDate =
+        document.getElementById("summaryDate");
+
+      const summaryPickup =
+        document.getElementById("summaryPickup");
+
+      const summaryPersons =
+        document.getElementById("summaryPersons");
+
+      const summaryAmount =
+        document.getElementById("summaryAmount");
+
+      const aranyaNotice =
+        document.getElementById("aranyaNotice");
+
+      const idType =
+        document.getElementById("idType");
+
+      const idNumber =
+        document.getElementById("idNumber");
+
+
+      /* ===================================================
+         SET MINIMUM DATE
+      =================================================== */
+
+      const today =
+        new Date();
+
+      const yyyy =
+        today.getFullYear();
+
+      const mm =
+        String(
+          today.getMonth() + 1
+        ).padStart(2, "0");
+
+      const dd =
+        String(
+          today.getDate()
+        ).padStart(2, "0");
+
+      travelDate.min =
+        `${yyyy}-${mm}-${dd}`;
+
+
+      /* ===================================================
+         UPDATE SUMMARY
+      =================================================== */
+
+      function updateSummary() {
+
+        const selected =
+          trip.options[
+            trip.selectedIndex
+          ];
+
+        const price =
+          Number(
+            selected?.dataset?.price || 0
+          );
+
+        const count =
+          Math.max(
+            1,
+            Number(persons.value || 1)
+          );
+
+        const total =
+          price * count;
+
+
+        if (!trip.value) {
+
+          tripSummary.classList.remove(
+            "show"
+          );
+
+          amount.value =
+            "Select a trip";
+
+          return;
+
+        }
+
+
+        tripSummary.classList.add(
+          "show"
+        );
+
+
+        summaryTrip.textContent =
+          trip.value;
+
+
+        summaryDate.textContent =
+          travelDate.value
+            ? formatDate(
+                travelDate.value
+              )
+            : "Not selected";
+
+
+        summaryPickup.textContent =
+          pickup.value ||
+          "Not selected";
+
+
+        summaryPersons.textContent =
+          count;
+
+
+        summaryAmount.textContent =
+          total
+            ? `₹${total.toLocaleString("en-IN")}`
+            : "To be confirmed";
+
+
+        amount.value =
+          total
+            ? `₹${total.toLocaleString("en-IN")}`
+            : "To be confirmed";
+
+
+        /* ===============================================
+           ARANYA VIHARA CONDITION
+        =============================================== */
+
+        const isAranya =
+          trip.value
+            .toLowerCase()
+            .includes("aranya vihara");
+
+
+        if (isAranya) {
+
+          aranyaNotice.classList.add(
+            "show"
+          );
+
+          idType.required = true;
+          idNumber.required = true;
+
+        } else {
+
+          aranyaNotice.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+
+
+      /* ===================================================
+         DATE FORMAT
+      =================================================== */
+
+      function formatDate(dateString) {
+
+        const date =
+          new Date(
+            `${dateString}T00:00:00`
+          );
+
+        return date.toLocaleDateString(
+          "en-IN",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          }
+        );
+
+      }
+
+
+      trip.addEventListener(
+        "change",
+        updateSummary
+      );
+
+
+      persons.addEventListener(
+        "input",
+        updateSummary
+      );
+
+
+      travelDate.addEventListener(
+        "change",
+        updateSummary
+      );
+
+
+      pickup.addEventListener(
+        "change",
+        updateSummary
+      );
+
+
+      /* ===================================================
+         READ TRIP FROM URL
+         
+         Example:
+         booking.html?trip=coorg
+      =================================================== */
+
+      const urlParams =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const requestedTrip =
+        urlParams.get("trip");
+
+
+      if (requestedTrip) {
+
+        const tripMap = {
+
+          "western-ghats":
+            "Western Ghats Escape",
+
+          "coastal-trails":
+            "Coastal Trails",
+
+          "coorg":
+            "Coorg Highlands",
+
+          "dharmasthala":
+            "Dharmasthala Trails",
+
+          "kumara-parvatha":
+            "Kumara Parvatha"
+
+        };
+
+
+        const tripName =
+          tripMap[
+            requestedTrip
+          ];
+
+
+        if (tripName) {
+
+          trip.value =
+            tripName;
+
+          updateSummary();
+
+        }
+
+      }
+
+
+      /* ===================================================
+         FORM SUBMISSION
+         
+         FormSubmit will handle the email.
+      =================================================== */
+
+      form.addEventListener(
+        "submit",
+        () => {
+
+          const submitButton =
+            form.querySelector(
+              ".booking-submit"
+            );
+
+
+          if (submitButton) {
+
+            submitButton.disabled =
+              true;
+
+            submitButton.innerHTML =
+              `
+                <span>
+                  Sending Request...
+                </span>
+
+                <span>
+                  …
+                </span>
+              `;
+
+          }
+
+        }
+      );
+
+
+      updateSummary();
+
+    }
+
+  );
+
+</script>
+
+
+</body>
+
+</html>

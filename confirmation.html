@@ -1,0 +1,746 @@
+<!-- confirmation.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Booking Received | VISTHARA</title>
+
+  <meta
+    name="description"
+    content="Your VISTHARA booking request has been received."
+  >
+
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+
+      color: #071c2d;
+      background: #f5f8fa;
+
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .confirmation-page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==============================================
+       HEADER
+    ============================================== */
+
+    .confirmation-header {
+      height: 90px;
+
+      display: flex;
+      align-items: center;
+
+      background: rgba(255,255,255,.96);
+
+      border-bottom: 1px solid #e3eaee;
+    }
+
+    .confirmation-header-inner {
+      width: min(1200px, calc(100% - 50px));
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .confirmation-logo img {
+      width: 145px;
+      height: auto;
+      display: block;
+    }
+
+    .confirmation-nav {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+
+      color: #62717d;
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .confirmation-nav a {
+      transition: color .25s ease;
+    }
+
+    .confirmation-nav a:hover {
+      color: #0878bd;
+    }
+
+    .confirmation-contact {
+      padding: 12px 19px;
+
+      border-radius: 100px;
+
+      color: white !important;
+      background: #0878bd;
+    }
+
+
+    /* ==============================================
+       MAIN
+    ============================================== */
+
+    .confirmation-main {
+      flex: 1;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 100px 20px;
+
+      overflow: hidden;
+    }
+
+    .background-word {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      color: rgba(8,120,189,.035);
+
+      font-size: clamp(100px, 20vw, 300px);
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .confirmation-container {
+      position: relative;
+      z-index: 2;
+
+      width: min(780px, 100%);
+
+      text-align: center;
+    }
+
+
+    /* ==============================================
+       SUCCESS ICON
+    ============================================== */
+
+    .success-circle {
+      width: 90px;
+      height: 90px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 30px;
+
+      border-radius: 50%;
+
+      color: white;
+      background: #0878bd;
+
+      font-size: 34px;
+
+      box-shadow:
+        0 18px 45px rgba(8,120,189,.22);
+    }
+
+
+    /* ==============================================
+       CONTENT
+    ============================================== */
+
+    .confirmation-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      color: #0878bd;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .confirmation-label span {
+      width: 35px;
+      height: 1px;
+
+      background: #0878bd;
+    }
+
+    .confirmation-container h1 {
+      margin: 0;
+
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: .95;
+      letter-spacing: -4px;
+    }
+
+    .confirmation-container h1 em {
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .confirmation-description {
+      max-width: 590px;
+
+      margin: 28px auto 0;
+
+      color: #687582;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    /* ==============================================
+       STATUS CARD
+    ============================================== */
+
+    .status-card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      margin-top: 55px;
+
+      border: 1px solid #dfe7ec;
+      border-radius: 18px;
+
+      background: white;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 20px 60px rgba(7,28,45,.06);
+    }
+
+    .status-item {
+      padding: 28px 20px;
+
+      border-right: 1px solid #dfe7ec;
+    }
+
+    .status-item:last-child {
+      border-right: none;
+    }
+
+    .status-number {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #0878bd;
+
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+    }
+
+    .status-item strong {
+      display: block;
+
+      margin-bottom: 6px;
+
+      font-size: 11px;
+    }
+
+    .status-item span {
+      color: #8996a0;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    /* ==============================================
+       ACTIONS
+    ============================================== */
+
+    .confirmation-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      margin-top: 40px;
+    }
+
+    .confirmation-button {
+      min-width: 190px;
+
+      padding: 16px 22px;
+
+      border-radius: 100px;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition:
+        transform .25s ease,
+        background .25s ease;
+    }
+
+    .confirmation-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: white;
+      background: #0878bd;
+    }
+
+    .button-primary:hover {
+      background: #075d92;
+    }
+
+    .button-secondary {
+      border: 1px solid #d5e0e6;
+
+      color: #50606b;
+      background: white;
+    }
+
+    .button-secondary:hover {
+      background: #f0f5f8;
+    }
+
+
+    /* ==============================================
+       CONTACT
+    ============================================== */
+
+    .confirmation-contact-note {
+      margin-top: 40px;
+
+      color: #8996a0;
+
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .confirmation-contact-note a {
+      color: #0878bd;
+      font-weight: 700;
+    }
+
+
+    /* ==============================================
+       FOOTER
+    ============================================== */
+
+    .confirmation-footer {
+      padding: 25px 20px;
+
+      border-top: 1px solid #e3eaee;
+
+      background: white;
+    }
+
+    .confirmation-footer-inner {
+      width: min(1200px, 100%);
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      color: #8996a0;
+
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+
+    /* ==============================================
+       MOBILE
+    ============================================== */
+
+    @media (max-width: 700px) {
+
+      .confirmation-header {
+        height: 75px;
+      }
+
+      .confirmation-header-inner {
+        width: calc(100% - 35px);
+      }
+
+      .confirmation-logo img {
+        width: 120px;
+      }
+
+      .confirmation-nav {
+        display: none;
+      }
+
+      .confirmation-main {
+        padding: 70px 18px;
+      }
+
+      .confirmation-container h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .status-card {
+        grid-template-columns: 1fr;
+      }
+
+      .status-item {
+        border-right: none;
+        border-bottom: 1px solid #dfe7ec;
+      }
+
+      .status-item:last-child {
+        border-bottom: none;
+      }
+
+      .confirmation-actions {
+        flex-direction: column;
+      }
+
+      .confirmation-button {
+        width: 100%;
+      }
+
+      .confirmation-footer-inner {
+        flex-direction: column;
+        gap: 10px;
+
+        text-align: center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="confirmation-page">
+
+
+  <!-- ==============================================
+       HEADER
+  ============================================== -->
+
+  <header class="confirmation-header">
+
+    <div class="confirmation-header-inner">
+
+
+      <a
+        href="index.html"
+        class="confirmation-logo"
+      >
+
+        <img
+          src="images/logo.png"
+          alt="VISTHARA"
+        >
+
+      </a>
+
+
+      <nav class="confirmation-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="trips.html">
+          Trips
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a
+          href="tel:+916363448110"
+          class="confirmation-contact"
+        >
+          +91 63634 48110
+        </a>
+
+      </nav>
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ==============================================
+       MAIN
+  ============================================== -->
+
+  <main class="confirmation-main">
+
+
+    <div class="background-word">
+      VISTHARA
+    </div>
+
+
+    <div class="confirmation-container">
+
+
+      <!-- SUCCESS -->
+
+      <div class="success-circle">
+        ✓
+      </div>
+
+
+      <!-- LABEL -->
+
+      <div class="confirmation-label">
+
+        <span></span>
+
+        BOOKING REQUEST RECEIVED
+
+        <span></span>
+
+      </div>
+
+
+      <!-- TITLE -->
+
+      <h1>
+
+        Your journey
+
+        <em>
+          starts here.
+        </em>
+
+      </h1>
+
+
+      <p class="confirmation-description">
+
+        Thank you for choosing VISTHARA.
+        Your booking request has been successfully
+        received by our team.
+
+        <br><br>
+
+        This is a booking request, not the final
+        confirmation. Our team will contact you using
+        the details you provided to verify the trip,
+        availability, pickup location, pricing and
+        required documents.
+
+
+      </p>
+
+
+
+      <!-- STATUS -->
+
+      <div class="status-card">
+
+
+        <div class="status-item">
+
+          <span class="status-number">
+            01
+          </span>
+
+          <strong>
+            Request Received
+          </strong>
+
+          <span>
+            Your booking details have reached our team.
+          </span>
+
+        </div>
+
+
+        <div class="status-item">
+
+          <span class="status-number">
+            02
+          </span>
+
+          <strong>
+            Team Contact
+          </strong>
+
+          <span>
+            Our team will contact you for verification.
+          </span>
+
+        </div>
+
+
+        <div class="status-item">
+
+          <span class="status-number">
+            03
+          </span>
+
+          <strong>
+            Booking Confirmed
+          </strong>
+
+          <span>
+            Your trip is confirmed after final approval.
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- ACTIONS -->
+
+      <div class="confirmation-actions">
+
+
+        <a
+          href="index.html"
+          class="confirmation-button button-primary"
+        >
+
+          Back to Home
+          &nbsp; ↗
+
+        </a>
+
+
+        <a
+          href="trips.html"
+          class="confirmation-button button-secondary"
+        >
+
+          Explore More Trips
+
+        </a>
+
+
+      </div>
+
+
+
+      <!-- CONTACT -->
+
+      <p class="confirmation-contact-note">
+
+        Need help with your booking?
+
+        <a href="tel:+916363448110">
+          Call +91 63634 48110
+        </a>
+
+        <br>
+
+        Karnataka • India
+
+      </p>
+
+
+    </div>
+
+  </main>
+
+
+
+  <!-- ==============================================
+       FOOTER
+  ============================================== -->
+
+  <footer class="confirmation-footer">
+
+    <div class="confirmation-footer-inner">
+
+      <span>
+        © 2026 VISTHARA. ALL RIGHTS RESERVED.
+      </span>
+
+      <span>
+        KARNATAKA • INDIA
+      </span>
+
+    </div>
+
+  </footer>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
