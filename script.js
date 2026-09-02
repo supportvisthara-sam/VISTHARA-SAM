@@ -1,804 +1,808 @@
 /* =========================================================
-   VISTHARA — MAIN JAVASCRIPT
-   logo: logo.png
-========================================================= */
+   VISHTHARA - MAIN SCRIPT
+   script.js
+   ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+"use strict";
 
-  /* =======================================================
-     BASIC ELEMENTS
-  ======================================================= */
+/* =========================================================
+   1. PAGE LOADER
+   ========================================================= */
 
-  const body = document.body;
+document.addEventListener("DOMContentLoaded", function () {
 
-  const pageLoader =
-    document.getElementById("pageLoader");
+    document.body.classList.add("page-loaded");
 
-  const header =
-    document.getElementById("mainHeader");
+    const loader = document.querySelector(".page-loader");
 
-  const mobileToggle =
-    document.getElementById("mobileMenuToggle");
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add("hide");
 
-  const mobileNavigation =
-    document.getElementById("mobileNavigation");
-
-  const mobileClose =
-    document.getElementById("mobileMenuClose");
-
-  const heroImage =
-    document.querySelector(".hero-background img");
-
-
-  /* =======================================================
-     LOGO
-     Automatically use logo.png
-  ======================================================= */
-
-  const logoImages =
-    document.querySelectorAll(
-      ".site-logo img, " +
-      ".loader-content img, " +
-      ".footer-brand img"
-    );
-
-  logoImages.forEach(img => {
-
-    img.src = "logo.png";
-
-    if (!img.alt) {
-      img.alt = "VISTHARA";
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        }, 400);
     }
 
-  });
+});
 
 
-  /* =======================================================
-     PAGE LOADER
-  ======================================================= */
+/* =========================================================
+   2. HEADER / NAVIGATION
+   ========================================================= */
 
-  const hideLoader = () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!pageLoader) return;
+    const header = document.querySelector("header");
 
-    setTimeout(() => {
+    function handleHeaderScroll() {
+        if (!header) return;
 
-      pageLoader.classList.add("hide");
-
-    }, 700);
-
-  };
-
-
-  if (document.readyState === "complete") {
-
-    hideLoader();
-
-  } else {
-
-    window.addEventListener(
-      "load",
-      hideLoader,
-      { once: true }
-    );
-
-  }
-
-
-  /* =======================================================
-     HEADER SCROLL
-  ======================================================= */
-
-  const updateHeader = () => {
-
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-
-      header.classList.add("scrolled");
-
-    } else {
-
-      header.classList.remove("scrolled");
-
-    }
-
-  };
-
-
-  updateHeader();
-
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     MOBILE MENU
-  ======================================================= */
-
-  const openMobileMenu = () => {
-
-    if (!mobileNavigation) return;
-
-    mobileNavigation.classList.add("open");
-
-    body.classList.add("menu-open");
-
-
-    if (mobileToggle) {
-
-      mobileToggle.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-
-      mobileToggle.setAttribute(
-        "aria-label",
-        "Close menu"
-      );
-
-    }
-
-  };
-
-
-  const closeMobileMenu = () => {
-
-    if (!mobileNavigation) return;
-
-    mobileNavigation.classList.remove("open");
-
-    body.classList.remove("menu-open");
-
-
-    if (mobileToggle) {
-
-      mobileToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      mobileToggle.setAttribute(
-        "aria-label",
-        "Open menu"
-      );
-
-    }
-
-  };
-
-
-  if (mobileToggle) {
-
-    mobileToggle.addEventListener(
-      "click",
-      () => {
-
-        if (
-          mobileNavigation &&
-          mobileNavigation.classList.contains("open")
-        ) {
-
-          closeMobileMenu();
-
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
         } else {
-
-          openMobileMenu();
-
+            header.classList.remove("scrolled");
         }
+    }
 
-      }
+    window.addEventListener("scroll", handleHeaderScroll, {
+        passive: true
+    });
+
+    handleHeaderScroll();
+
+});
+
+
+/* =========================================================
+   3. MOBILE MENU
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.querySelector(
+        ".menu-toggle, .mobile-menu-toggle, #menuToggle"
     );
 
-  }
-
-
-  if (mobileClose) {
-
-    mobileClose.addEventListener(
-      "click",
-      closeMobileMenu
+    const nav = document.querySelector(
+        ".nav-links, .navigation, #navLinks"
     );
 
-  }
+    if (!menuToggle || !nav) return;
 
+    menuToggle.addEventListener("click", function () {
 
-  /* =======================================================
-     MOBILE LINKS
-  ======================================================= */
+        nav.classList.toggle("active");
+        menuToggle.classList.toggle("active");
 
-  if (mobileNavigation) {
+        const expanded =
+            menuToggle.getAttribute("aria-expanded") === "true";
 
-    const mobileLinks =
-      mobileNavigation.querySelectorAll("a");
-
-
-    mobileLinks.forEach(link => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          closeMobileMenu();
-
-        }
-      );
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(!expanded)
+        );
 
     });
 
-  }
+    /* Close menu after clicking a link */
 
+    nav.querySelectorAll("a").forEach(function (link) {
 
-  /* =======================================================
-     CLOSE MENU WITH ESCAPE
-  ======================================================= */
+        link.addEventListener("click", function () {
 
-  document.addEventListener(
-    "keydown",
-    event => {
+            nav.classList.remove("active");
+            menuToggle.classList.remove("active");
 
-      if (
-        event.key === "Escape" &&
-        mobileNavigation &&
-        mobileNavigation.classList.contains("open")
-      ) {
-
-        closeMobileMenu();
-
-      }
-
-    }
-  );
-
-
-  /* =======================================================
-     SMOOTH SCROLL
-  ======================================================= */
-
-  const smoothLinks =
-    document.querySelectorAll(
-      'a[href^="#"]'
-    );
-
-
-  smoothLinks.forEach(link => {
-
-    link.addEventListener(
-      "click",
-      event => {
-
-        const targetId =
-          link.getAttribute("href");
-
-
-        if (
-          !targetId ||
-          targetId === "#"
-        ) {
-
-          return;
-
-        }
-
-
-        let target;
-
-
-        try {
-
-          target =
-            document.querySelector(targetId);
-
-        } catch {
-
-          return;
-
-        }
-
-
-        if (!target) return;
-
-
-        event.preventDefault();
-
-
-        const headerHeight =
-          header
-            ? header.offsetHeight
-            : 0;
-
-
-        const position =
-          target.getBoundingClientRect().top +
-          window.scrollY -
-          headerHeight -
-          20;
-
-
-        window.scrollTo({
-
-          top: Math.max(position, 0),
-
-          behavior: "smooth"
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
         });
 
+    });
 
-        closeMobileMenu();
+    /* Close menu with Escape */
 
-      }
-    );
+    document.addEventListener("keydown", function (event) {
 
-  });
+        if (event.key === "Escape") {
 
+            nav.classList.remove("active");
+            menuToggle.classList.remove("active");
 
-  /* =======================================================
-     SCROLL REVEAL
-  ======================================================= */
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-  const revealElements =
-    document.querySelectorAll(
-      ".intro-content, " +
-      ".featured-trip, " +
-      ".experience-content, " +
-      ".experience-stat, " +
-      ".destination-card, " +
-      ".home-booking-inner"
-    );
+        }
 
+    });
 
-  revealElements.forEach(element => {
-
-    element.classList.add("reveal");
-
-  });
+});
 
 
-  if (
-    "IntersectionObserver" in window
-  ) {
+/* =========================================================
+   4. SMOOTH SCROLL
+   ========================================================= */
 
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
+document.addEventListener("DOMContentLoaded", function () {
 
-          entries.forEach(entry => {
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
-            if (
-              entry.isIntersecting
-            ) {
+        link.addEventListener("click", function (event) {
 
-              entry.target.classList.add(
-                "visible"
-              );
+            const targetId = this.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            const header =
+                document.querySelector("header");
+
+            const headerHeight =
+                header ? header.offsetHeight : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight -
+                15;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+});
 
 
-              revealObserver.unobserve(
-                entry.target
-              );
+/* =========================================================
+   5. REVEAL ANIMATION
+   ========================================================= */
 
-            }
+document.addEventListener("DOMContentLoaded", function () {
 
-          });
+    const revealElements =
+        document.querySelectorAll("[data-reveal]");
+
+    if (!revealElements.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+
+        revealElements.forEach(function (element) {
+            element.classList.add("revealed");
+        });
+
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        function (entries, observer) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("revealed");
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
 
         },
         {
-
-          threshold: 0.12,
-
-          rootMargin:
-            "0px 0px -50px 0px"
-
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
         }
-      );
+    );
+
+    revealElements.forEach(function (element) {
+        observer.observe(element);
+    });
+
+});
 
 
-    revealElements.forEach(element => {
+/* =========================================================
+   6. LAZY LOAD IMAGES
+   ========================================================= */
 
-      revealObserver.observe(element);
+document.addEventListener("DOMContentLoaded", function () {
+
+    const lazyImages =
+        document.querySelectorAll("img[data-src]");
+
+    if (!lazyImages.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+
+        lazyImages.forEach(function (img) {
+
+            img.src = img.dataset.src;
+
+            img.removeAttribute("data-src");
+
+        });
+
+        return;
+    }
+
+    const imageObserver = new IntersectionObserver(
+        function (entries, observer) {
+
+            entries.forEach(function (entry) {
+
+                if (!entry.isIntersecting) return;
+
+                const img = entry.target;
+
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+
+                img.removeAttribute("data-src");
+
+                observer.unobserve(img);
+
+            });
+
+        },
+        {
+            rootMargin: "100px"
+        }
+    );
+
+    lazyImages.forEach(function (img) {
+        imageObserver.observe(img);
+    });
+
+});
+
+
+/* =========================================================
+   7. CURRENT PAGE NAVIGATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+    document.querySelectorAll("nav a, .nav-links a").forEach(function (link) {
+
+        const href =
+            link.getAttribute("href");
+
+        if (!href) return;
+
+        const linkPage =
+            href.split("/")
+                .pop()
+                .split("#")[0]
+                .toLowerCase();
+
+        if (
+            linkPage &&
+            linkPage === currentPage
+        ) {
+            link.classList.add("active");
+        }
 
     });
 
-  } else {
-
-    revealElements.forEach(element => {
-
-      element.classList.add(
-        "visible"
-      );
-
-    });
-
-  }
+});
 
 
-  /* =======================================================
-     HERO PARALLAX
-  ======================================================= */
+/* =========================================================
+   8. BOOKING PAGE - TRIP FROM URL
+   ========================================================= */
 
-  const reducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+document.addEventListener("DOMContentLoaded", function () {
 
+    const tripSelect =
+        document.getElementById("trip");
 
-  if (
-    heroImage &&
-    !reducedMotion
-  ) {
+    if (!tripSelect) return;
 
-    let ticking = false;
+    const params =
+        new URLSearchParams(window.location.search);
 
+    const trip =
+        params.get("trip");
 
-    const updateParallax = () => {
+    if (!trip) return;
 
-      const scroll =
-        window.scrollY;
+    const tripMap = {
 
+        "western-ghats":
+            "Western Ghats Escape",
 
-      if (
-        scroll <
-        window.innerHeight
-      ) {
+        "coastal-trails":
+            "Coastal Trails",
 
-        heroImage.style.transform =
-          `translate3d(0, ${scroll * 0.12}px, 0) scale(1.02)`;
+        "coorg":
+            "Coorg Highlands",
 
-      }
+        "dharmasthala":
+            "Dharmasthala Trails",
 
-
-      ticking = false;
+        "kumara-parvatha":
+            "Kumara Parvatha"
 
     };
 
+    const tripName =
+        tripMap[trip];
 
-    window.addEventListener(
-      "scroll",
-      () => {
+    if (!tripName) return;
 
-        if (!ticking) {
+    for (let i = 0; i < tripSelect.options.length; i++) {
 
-          window.requestAnimationFrame(
-            updateParallax
-          );
+        if (
+            tripSelect.options[i].text
+                .toLowerCase()
+                .includes(tripName.toLowerCase())
+        ) {
 
-          ticking = true;
+            tripSelect.selectedIndex = i;
 
+            tripSelect.dispatchEvent(
+                new Event("change", {
+                    bubbles: true
+                })
+            );
+
+            break;
         }
-
-      },
-      { passive: true }
-    );
-
-  }
-
-
-  /* =======================================================
-     ACTIVE DESKTOP NAVIGATION
-  ======================================================= */
-
-  const currentPage =
-    window.location.pathname
-      .split("/")
-      .pop()
-      .toLowerCase();
-
-
-  const navigationLinks =
-    document.querySelectorAll(
-      ".desktop-navigation a"
-    );
-
-
-  navigationLinks.forEach(link => {
-
-    const href =
-      link.getAttribute("href");
-
-
-    if (!href) return;
-
-
-    const linkPage =
-      href
-        .split("/")
-        .pop()
-        .split("#")[0]
-        .toLowerCase();
-
-
-    const homePage =
-      (
-        currentPage === "" ||
-        currentPage === "index.html"
-      ) &&
-      (
-        linkPage === "" ||
-        linkPage === "index.html"
-      );
-
-
-    if (
-      linkPage === currentPage ||
-      homePage
-    ) {
-
-      link.classList.add(
-        "active"
-      );
 
     }
 
-  });
+});
 
 
-  /* =======================================================
-     SECTION ACTIVE NAVIGATION
-     Highlights menu while scrolling
-  ======================================================= */
+/* =========================================================
+   9. PHONE NUMBER INPUT
+   ========================================================= */
 
-  const sections =
-    document.querySelectorAll(
-      "main section[id]"
-    );
+document.addEventListener("DOMContentLoaded", function () {
 
+    const phoneInputs =
+        document.querySelectorAll(
+            'input[type="tel"], input[name*="Phone"], input[name*="phone"]'
+        );
 
-  if (
-    sections.length &&
-    "IntersectionObserver" in window
-  ) {
+    phoneInputs.forEach(function (input) {
 
-    const sectionObserver =
-      new IntersectionObserver(
-        entries => {
+        input.addEventListener("input", function () {
 
-          entries.forEach(entry => {
+            let value =
+                this.value.replace(/\D/g, "");
 
-            if (
-              entry.isIntersecting
-            ) {
+            /* Indian mobile number */
 
-              const id =
-                entry.target.id;
-
-
-              navigationLinks.forEach(link => {
-
-                link.classList.remove(
-                  "active"
-                );
-
-
-                if (
-                  link.getAttribute("href") ===
-                  `#${id}`
-                ) {
-
-                  link.classList.add(
-                    "active"
-                  );
-
-                }
-
-              });
-
+            if (value.length > 10) {
+                value = value.substring(0, 10);
             }
 
-          });
+            this.value = value;
 
-        },
-        {
-
-          rootMargin:
-            "-30% 0px -60% 0px",
-
-          threshold: 0
-
-        }
-      );
-
-
-    sections.forEach(section => {
-
-      sectionObserver.observe(
-        section
-      );
+        });
 
     });
 
-  }
+});
 
 
-  /* =======================================================
-     IMAGE FALLBACK
-  ======================================================= */
+/* =========================================================
+   10. NUMBER INPUT PROTECTION
+   ========================================================= */
 
-  const images =
-    document.querySelectorAll("img");
+document.addEventListener("DOMContentLoaded", function () {
+
+    const numberInputs =
+        document.querySelectorAll(
+            'input[type="number"]'
+        );
+
+    numberInputs.forEach(function (input) {
+
+        input.addEventListener("input", function () {
+
+            const min =
+                this.getAttribute("min");
+
+            const max =
+                this.getAttribute("max");
+
+            let value =
+                parseInt(this.value, 10);
+
+            if (Number.isNaN(value)) return;
+
+            if (
+                min !== null &&
+                value < Number(min)
+            ) {
+                this.value = min;
+            }
+
+            if (
+                max !== null &&
+                value > Number(max)
+            ) {
+                this.value = max;
+            }
+
+        });
+
+    });
+
+});
 
 
-  images.forEach(image => {
+/* =========================================================
+   11. BOOKING FORM - BASIC VALIDATION
+   ========================================================= */
 
-    image.addEventListener(
-      "error",
-      () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-        /*
-          Do NOT hide logo.png.
-          If another image fails, keep layout clean.
-        */
+    const bookingForm =
+        document.getElementById("bookingForm");
 
-        if (
-          image.src.includes("logo.png")
-        ) {
+    if (!bookingForm) return;
 
-          console.warn(
-            "VISTHARA logo.png could not be loaded."
-          );
+    const phone =
+        document.getElementById("phone");
 
-          return;
+    const email =
+        document.getElementById("email");
+
+    /* Phone validation */
+
+    if (phone) {
+
+        phone.addEventListener("blur", function () {
+
+            if (
+                this.value &&
+                !/^[6-9]\d{9}$/.test(this.value)
+            ) {
+
+                this.setCustomValidity(
+                    "Please enter a valid 10-digit Indian mobile number."
+                );
+
+            } else {
+
+                this.setCustomValidity("");
+
+            }
+
+        });
+
+        phone.addEventListener("input", function () {
+            this.setCustomValidity("");
+        });
+
+    }
+
+    /* Email validation */
+
+    if (email) {
+
+        email.addEventListener("blur", function () {
+
+            if (
+                this.value &&
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)
+            ) {
+
+                this.setCustomValidity(
+                    "Please enter a valid email address."
+                );
+
+            } else {
+
+                this.setCustomValidity("");
+
+            }
+
+        });
+
+        email.addEventListener("input", function () {
+            this.setCustomValidity("");
+        });
+
+    }
+
+});
+
+
+/* =========================================================
+   12. PREVENT DOUBLE CLICK ON NON-BOOKING FORMS
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("form").forEach(function (form) {
+
+        if (form.id === "bookingForm") return;
+
+        form.addEventListener("submit", function () {
+
+            const button =
+                form.querySelector(
+                    'button[type="submit"], input[type="submit"]'
+                );
+
+            if (!button) return;
+
+            setTimeout(function () {
+
+                button.disabled = true;
+
+            }, 0);
+
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   13. EXTERNAL LINKS
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll(
+        'a[href^="http://"], a[href^="https://"]'
+    ).forEach(function (link) {
+
+        const currentHost =
+            window.location.hostname;
+
+        try {
+
+            const linkURL =
+                new URL(
+                    link.href,
+                    window.location.href
+                );
+
+            if (
+                linkURL.hostname &&
+                linkURL.hostname !== currentHost
+            ) {
+
+                link.target = "_blank";
+
+                link.rel = "noopener noreferrer";
+
+            }
+
+        } catch (error) {
+
+            console.warn(
+                "Invalid external link:",
+                link.href
+            );
 
         }
 
-
-        image.style.opacity = "0";
-
-      },
-      {
-        once: true
-      }
-    );
-
-  });
-
-
-  /* =======================================================
-     BUTTON MICRO INTERACTIONS
-  ======================================================= */
-
-  const buttons =
-    document.querySelectorAll(
-      ".primary-button, " +
-      ".secondary-button, " +
-      ".header-book-button, " +
-      ".white-button, " +
-      ".large-book-button, " +
-      ".outline-button"
-    );
-
-
-  buttons.forEach(button => {
-
-    button.addEventListener(
-      "mouseenter",
-      () => {
-
-        button.style.willChange =
-          "transform";
-
-      }
-    );
-
-
-    button.addEventListener(
-      "mouseleave",
-      () => {
-
-        button.style.willChange =
-          "auto";
-
-      }
-    );
-
-  });
-
-
-  /* =======================================================
-     KEYBOARD ACCESSIBILITY
-  ======================================================= */
-
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (
-        event.key === "Tab"
-      ) {
-
-        body.classList.add(
-          "keyboard-navigation"
-        );
-
-      }
-
-    }
-  );
-
-
-  document.addEventListener(
-    "mousedown",
-    () => {
-
-      body.classList.remove(
-        "keyboard-navigation"
-      );
-
-    }
-  );
-
-
-  /* =======================================================
-     CURRENT YEAR
-  ======================================================= */
-
-  const yearElements =
-    document.querySelectorAll(
-      "[data-current-year]"
-    );
-
-
-  yearElements.forEach(element => {
-
-    element.textContent =
-      new Date().getFullYear();
-
-  });
-
-
-  /* =======================================================
-     PREVENT EMPTY LINKS
-  ======================================================= */
-
-  document.querySelectorAll(
-    'a[href="#"]'
-  ).forEach(link => {
-
-    link.addEventListener(
-      "click",
-      event => {
-
-        event.preventDefault();
-
-      }
-    );
-
-  });
-
-
-  /* =======================================================
-     INITIAL MOBILE ACCESSIBILITY
-  ======================================================= */
-
-  if (mobileToggle) {
-
-    mobileToggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    mobileToggle.setAttribute(
-      "aria-label",
-      "Open menu"
-    );
-
-  }
-
-
-  /* =======================================================
-     VISTHARA
-  ======================================================= */
-
-  console.log(
-    "%cVISTHARA",
-    "font-size:24px;font-weight:700;color:#0878bd;"
-  );
-
-  console.log(
-    "Travel Made Easier."
-  );
+    });
 
 });
+
+
+/* =========================================================
+   14. BACK TO TOP BUTTON
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const backToTop =
+        document.querySelector(
+            "#backToTop, .back-to-top"
+        );
+
+    if (!backToTop) return;
+
+    function updateBackToTop() {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add("show");
+
+        } else {
+
+            backToTop.classList.remove("show");
+
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        { passive: true }
+    );
+
+    updateBackToTop();
+
+    backToTop.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   15. AUTO CURRENT YEAR
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const yearElements =
+        document.querySelectorAll(
+            "#currentYear, .current-year"
+        );
+
+    const currentYear =
+        new Date().getFullYear();
+
+    yearElements.forEach(function (element) {
+
+        element.textContent =
+            currentYear;
+
+    });
+
+});
+
+
+/* =========================================================
+   16. WHATSAPP BUTTON
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const whatsappNumber =
+        "916363448110";
+
+    const whatsappButtons =
+        document.querySelectorAll(
+            '[data-whatsapp], .whatsapp-button, .whatsapp-float'
+        );
+
+    whatsappButtons.forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
+
+            const href =
+                button.getAttribute("href");
+
+            /* If button already has a WhatsApp URL,
+               allow normal behaviour */
+
+            if (
+                href &&
+                href.includes("wa.me")
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const message =
+                "Hello VISHTHARA, I would like to know more about your travel packages.";
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                encodeURIComponent(message);
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   17. PREVENT ACCIDENTAL FORM RESUBMISSION
+   ========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function (event) {
+
+        if (event.persisted) {
+
+            document
+                .querySelectorAll(
+                    'button[type="submit"]'
+                )
+                .forEach(function (button) {
+
+                    button.disabled = false;
+
+                });
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   18. ERROR HANDLING
+   ========================================================= */
+
+window.addEventListener(
+    "error",
+    function (event) {
+
+        console.warn(
+            "VISHTHARA website error:",
+            event.message
+        );
+
+    }
+);
+
+
+/* =========================================================
+   19. BRAND CONSOLE MESSAGE
+   ========================================================= */
+
+console.log(
+    "%cVISHTHARA",
+    "font-size:24px;font-weight:bold;"
+);
+
+console.log(
+    "Travel • Tours • Experiences"
+);
+
+console.log(
+    "WhatsApp: +91 63634 48110"
+);
+
+
+/* =========================================================
+   END OF SCRIPT
+   ========================================================= */
